@@ -20,3 +20,8 @@ Small employers and outdoor workers in Boston, Massachusetts
 **Key finding:** Massachusetts has no heat standard for private employers, and Boston's ordinance covers only city contractors. Heat Shield uses NIOSH guidance as its default.
 
 ## How to run it
+```
+pip install pandas pyyaml requests pytest openpyxl
+python weather.py 02125
+python -m pytest tests
+```
