@@ -1,16 +1,6 @@
+
 last_reviewed: 2026-11-13
 
-jurisdictions:
-  - id: niosh
-    name: NIOSH recommended standard
-    status: guidance
-    source_url: https://www.cdc.gov/niosh/docs/2016-106/pdfs/2016-106.pdf
-    verified_on: 2026-11-13
-    water: 
-    acclimatization_new_worker: 
-    acclimatization_experienced_worker: 
-    heat_alert: 
-last_reviewed: 2026-11-13
 
 jurisdictions:
   - id: niosh
@@ -18,6 +8,8 @@ jurisdictions:
     status: guidance
     source_url: https://www.cdc.gov/niosh/docs/2016-106/pdfs/2016-106.pdf
     verified_on: 2026-11-13
+    human_check: done
+
     water: "1 cup (8 oz) every 15-20 minutes; sports drinks if sweating for several hours"
     acclimatization_new_worker: "no more than 20% on day 1, then no more than 20% more each day"
     acclimatization_experienced_worker: "50% day 1, 60% day 2, 80% day 3, 100% day 4"
@@ -34,6 +26,8 @@ jurisdictions:
     bill_status: "Reported favorably 2026-08-10, sent to Senate Ways and Means"
     source_url: https://malegislature.gov/Bills/194/S3240
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: boston
     name: City of Boston heat ordinance
@@ -47,6 +41,8 @@ jurisdictions:
     source_url: https://www.boston.gov/sites/default/files/file/2026/03/Heat%20Ordinance%20as%20Passed%20by%20Council.pdf
     extra_url: https://boston.gov/heat-protections
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: federal_osha_proposed
     name: Federal OSHA proposed heat rule (29 CFR 1910.148)
@@ -63,6 +59,8 @@ jurisdictions:
     source_url: https://www.federalregister.gov/documents/2024/08/30/2024-14824/heat-injury-and-illness-prevention-in-outdoor-and-indoor-work-settings
     extra_url: https://www.osha.gov/heat-exposure/rulemaking
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: california_outdoor
     name: California outdoor heat illness rule (8 CCR 3395)
@@ -77,6 +75,8 @@ jurisdictions:
     note: "Uses air temperature, not heat index"
     source_url: https://www.dir.ca.gov/title8/3395.html
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: washington_outdoor
     name: Washington outdoor heat exposure rule (WAC 296-62-095)
@@ -91,6 +91,8 @@ jurisdictions:
     acclimatization: "close observation for 14 days for new or returning workers"
     source_url: https://app.leg.wa.gov/wac/default.aspx?cite=296-62-09530
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: oregon
     name: Oregon heat illness prevention rule (OAR 437-002-0156)
@@ -104,6 +106,8 @@ jurisdictions:
     acclimatization: "written plan required, no fixed % schedule"
     source_url: https://osha.oregon.gov/OSHARules/div2/div2J.pdf
     verified_on: 2026-11-13
+    human_check: done
+
 
   - id: maryland
     name: Maryland heat stress standard (COMAR 09.12.32)
@@ -114,6 +118,7 @@ jurisdictions:
     high_heat_trigger_hi: 90
     water: "32 oz per worker per hour"
     rest: "10 min every 2 hours above 90; 15 min every hour above 100"
-    acclimatization: "written schedule up to 14 days, max 20% increase per day"
+    acclimatization: "written schmarylandedule up to 14 days, max 20% increase per day"
     source_url: https://regs.maryland.gov/us/md/exec/comar/09.12.32.08
     verified_on: 2026-11-13
+    human_check: done
