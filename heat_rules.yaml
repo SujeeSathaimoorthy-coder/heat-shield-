@@ -1,0 +1,119 @@
+last_reviewed: 2026-11-13
+
+jurisdictions:
+  - id: niosh
+    name: NIOSH recommended standard
+    status: guidance
+    source_url: https://www.cdc.gov/niosh/docs/2016-106/pdfs/2016-106.pdf
+    verified_on: 2026-11-13
+    water: 
+    acclimatization_new_worker: 
+    acclimatization_experienced_worker: 
+    heat_alert: 
+last_reviewed: 2026-11-13
+
+jurisdictions:
+  - id: niosh
+    name: NIOSH recommended standard (2016-106)
+    status: guidance
+    source_url: https://www.cdc.gov/niosh/docs/2016-106/pdfs/2016-106.pdf
+    verified_on: 2026-11-13
+    water: "1 cup (8 oz) every 15-20 minutes; sports drinks if sweating for several hours"
+    acclimatization_new_worker: "no more than 20% on day 1, then no more than 20% more each day"
+    acclimatization_experienced_worker: "50% day 1, 60% day 2, 80% day 3, 100% day 4"
+    full_acclimatization_days: "7 to 14"
+    heat_alert: "daily high above 95F, or above 90F and 9F or more hotter than the days before"
+    pages: "water p. viii; acclimatization Table 4-1 p. 34; heat alert p. 10"
+
+  - id: massachusetts
+    name: Massachusetts (state)
+    status: no_standard
+    applies_to_pilot_sites: true
+    notes: "No state heat rule for private employers. Bill S.3240 is still in Senate Ways and Means, not law."
+    pending_bill: S.3240
+    bill_status: "Reported favorably 2026-08-10, sent to Senate Ways and Means"
+    source_url: https://malegislature.gov/Bills/194/S3240
+    verified_on: 2026-11-13
+
+  - id: boston
+    name: City of Boston heat ordinance
+    status: in_effect_limited_scope
+    applies_to_pilot_sites: false
+    citation: Boston City Code Ch. 4-10
+    covers: "City departments and city contractors only, not private businesses"
+    initial_trigger_hi: 80
+    high_heat_trigger_hi: 90
+    effective_date: "about Feb 2026 (six months after passage)"
+    source_url: https://www.boston.gov/sites/default/files/file/2026/03/Heat%20Ordinance%20as%20Passed%20by%20Council.pdf
+    extra_url: https://boston.gov/heat-protections
+    verified_on: 2026-11-13
+
+  - id: federal_osha_proposed
+    name: Federal OSHA proposed heat rule (29 CFR 1910.148)
+    status: proposed
+    applies_to_pilot_sites: false
+    citation: "89 FR 70698, published Aug 30, 2024"
+    rulemaking_status: "Still proposed as of Nov 2026. Supplemental proposal expected Dec 2026, final rule expected Oct 2027."
+    initial_trigger_hi: 80
+    high_heat_trigger_hi: 90
+    water: "1 quart per worker per hour"
+    rest_high_heat: "15-minute paid break every 2 hours"
+    acclimatization_new_worker: "20%, 40%, 60%, 80% on days 1-4"
+    acclimatization_returning_worker: "50%, 60%, 80% on days 1-3"
+    source_url: https://www.federalregister.gov/documents/2024/08/30/2024-14824/heat-injury-and-illness-prevention-in-outdoor-and-indoor-work-settings
+    extra_url: https://www.osha.gov/heat-exposure/rulemaking
+    verified_on: 2026-11-13
+
+  - id: california_outdoor
+    name: California outdoor heat illness rule (8 CCR 3395)
+    status: in_effect
+    applies_to_pilot_sites: false
+    effective_date: 2015-05-01
+    shade_trigger_f: 80
+    high_heat_trigger_f: 95
+    water: "1 quart per worker per hour"
+    rest: "cool-down rest of at least 5 minutes when needed"
+    acclimatization: "close observation of new workers for first 14 days"
+    note: "Uses air temperature, not heat index"
+    source_url: https://www.dir.ca.gov/title8/3395.html
+    verified_on: 2026-11-13
+
+  - id: washington_outdoor
+    name: Washington outdoor heat exposure rule (WAC 296-62-095)
+    status: in_effect
+    applies_to_pilot_sites: false
+    effective_date: 2023-07-17
+    action_trigger_f: 80
+    action_trigger_f_vapor_barrier_clothing: 52
+    high_heat_trigger_f: 90
+    water: "1 quart per worker per hour"
+    rest: "10 min every 2 hours at 90F; 15 min every hour at 100F"
+    acclimatization: "close observation for 14 days for new or returning workers"
+    source_url: https://app.leg.wa.gov/wac/default.aspx?cite=296-62-09530
+    verified_on: 2026-11-13
+
+  - id: oregon
+    name: Oregon heat illness prevention rule (OAR 437-002-0156)
+    status: in_effect
+    applies_to_pilot_sites: false
+    effective_date: 2022-06-15
+    initial_trigger_hi: 80
+    high_heat_trigger_hi: 90
+    water: "up to 32 oz per hour, cool or cold"
+    rest: "10 min every 2 hours at 90; 20 min/hour at 95; 30 min/hour at 100; 40 min/hour at 105 (simple schedule option)"
+    acclimatization: "written plan required, no fixed % schedule"
+    source_url: https://osha.oregon.gov/OSHARules/div2/div2J.pdf
+    verified_on: 2026-11-13
+
+  - id: maryland
+    name: Maryland heat stress standard (COMAR 09.12.32)
+    status: in_effect
+    applies_to_pilot_sites: false
+    effective_date: 2024-09-30
+    initial_trigger_hi: 80
+    high_heat_trigger_hi: 90
+    water: "32 oz per worker per hour"
+    rest: "10 min every 2 hours above 90; 15 min every hour above 100"
+    acclimatization: "written schedule up to 14 days, max 20% increase per day"
+    source_url: https://regs.maryland.gov/us/md/exec/comar/09.12.32.08
+    verified_on: 2026-11-13
