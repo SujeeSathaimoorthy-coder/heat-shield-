@@ -5,4 +5,4 @@ New workers are put on full shifts in the heat with no slow start ,which is gap 
 ## What Heat Shield will do 
 It helps small employers make a simple heat plan – water, rest, shade, and a slow start for new workers
 ## Who it is for
-Small employers and outdoor workers in Boston, Massachusetts 
+Small employers and outdoor workers in Boston, Massachusetts
