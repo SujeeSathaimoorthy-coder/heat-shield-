@@ -59,3 +59,11 @@ def test_live_dorchester_zip():
     # Needs internet: loads 2 days of real forecast for 02125
     df = weather_for_zip("02125", days=2)
     assert len(df) == 48
+
+
+def test_station_csv_uploaded_in_memory():
+    import io
+    upload = io.BytesIO(b"time,temp_f,rh\n2025-06-24 14:00,95,50\n")
+    upload.name = "station.csv"          # Streamlit uploads have a .name
+    df = load_station_csv(upload)
+    assert len(df) == 1 and df.loc[0, "heat_index"] > 95

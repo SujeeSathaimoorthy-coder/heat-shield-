@@ -1,10 +1,12 @@
 """Weather data for Heat Shield.
 
-Two ways to get an hourly weather table (temperature, humidity, heat index):
+Three ways to get an hourly weather table (temperature, humidity, heat index):
 1. weather_for_zip("02125") - free forecast from Open-Meteo (no API key)
 2. load_station_csv(path)   - a CSV from a weather station (e.g. NOAA Boston Logan)
+3. fetch_past_weather(...)  - real past weather from the Open-Meteo archive
 
 Try it:  python weather.py 02125
+Make the sample heat wave file:  python weather.py --sample
 """
 
 import sys
@@ -16,6 +18,7 @@ import requests
 from heat_index import heat_index
 
 OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
+OPEN_METEO_ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
 ZIP_URL = "https://api.zippopotam.us/us/{zip}"
 
 
@@ -60,6 +63,28 @@ def fetch_open_meteo(lat, lon, days=7, timezone="America/New_York"):
     return parse_open_meteo(resp.json())
 
 
+def fetch_past_weather(lat, lon, start_date, end_date, timezone="America/New_York"):
+    """Hourly weather that already happened (Open-Meteo archive, free, no key).
+
+    start_date / end_date look like "2025-06-21".
+    """
+    params = {
+        "latitude": lat,
+        "longitude": lon,
+        "start_date": start_date,
+        "end_date": end_date,
+        "hourly": "temperature_2m,relative_humidity_2m",
+        "temperature_unit": "fahrenheit",
+        "timezone": timezone,
+    }
+    try:
+        resp = requests.get(OPEN_METEO_ARCHIVE_URL, params=params, timeout=30)
+        resp.raise_for_status()
+    except requests.RequestException as err:
+        raise WeatherError(f"Could not reach the Open-Meteo archive: {err}") from err
+    return parse_open_meteo(resp.json())
+
+
 def parse_open_meteo(data):
     """Turn the Open-Meteo reply into a table."""
     try:
@@ -88,12 +113,19 @@ def _clean_number(value):
         return None
 
 
-def load_station_csv(path):
-    """Read a station CSV: NOAA LCD format, or simple columns time, temp_f, rh."""
-    path = Path(path)
-    if not path.exists():
-        raise WeatherError(f"Could not find the station file '{path}'.")
-    raw = pd.read_csv(path, dtype=str, low_memory=False)
+def load_station_csv(source):
+    """Read a station CSV: NOAA LCD format, or simple columns time, temp_f, rh.
+
+    source can be a file path, or a file uploaded in the Streamlit app.
+    """
+    if not hasattr(source, "read"):              # a path, not an upload
+        source = Path(source)
+        if not source.exists():
+            raise WeatherError(f"Could not find the station file '{source}'.")
+    try:
+        raw = pd.read_csv(source, dtype=str, low_memory=False)
+    except (pd.errors.EmptyDataError, pd.errors.ParserError, UnicodeDecodeError):
+        raise WeatherError("The station file could not be read. Please upload a .csv file.")
 
     if {"DATE", "HourlyDryBulbTemperature", "HourlyRelativeHumidity"} <= set(raw.columns):
         time_col, temp_col, rh_col = "DATE", "HourlyDryBulbTemperature", "HourlyRelativeHumidity"
@@ -115,7 +147,19 @@ def load_station_csv(path):
     return _add_heat_index(df)
 
 
+def save_sample_heat_wave(path="sample_weather.csv"):
+    """Save the real Boston heat wave of June 21-27, 2025 (Dorchester, 02125)
+    as a station-style CSV, so the app has a hot week to show in winter."""
+    lat, lon, _ = zip_to_latlon("02125")
+    df = fetch_past_weather(lat, lon, "2025-06-21", "2025-06-27")
+    df[["time", "temp_f", "rh"]].to_csv(path, index=False)
+    print(f"Saved {len(df)} hours to {path}. Hottest heat index: {df['heat_index'].max()}F")
+
+
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "--sample":
+        save_sample_heat_wave()
+        sys.exit()
     zip_code = sys.argv[1] if len(sys.argv) > 1 else "02125"
     lat, lon, place = zip_to_latlon(zip_code)
     series = fetch_open_meteo(lat, lon)
@@ -123,3 +167,4 @@ if __name__ == "__main__":
     print(series.head(12).to_string(index=False))
     peak = series.loc[series["heat_index"].idxmax()]
     print(f"\nHighest heat index this week: {peak['heat_index']}F at {peak['time']}")
+
